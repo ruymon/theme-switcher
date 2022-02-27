@@ -6,16 +6,20 @@ import { shade } from 'polished';
 
 import { Container } from './styles';
 
-export function Header() {
-    const { colors } = useContext(ThemeContext);
+interface HeaderProps {
+    toggleTheme(): void;
+}
+
+export function Header({ toggleTheme }: HeaderProps) {
+    const { colors, title } = useContext(ThemeContext);
 
     return (
         <Container>
             Hello World
 
             <Switch
-                onChange={() => {}}
-                checked={true}
+                onChange={toggleTheme}
+                checked={title === 'dark'}
                 checkedIcon={false}
                 uncheckedIcon={false}
                 height={10}
